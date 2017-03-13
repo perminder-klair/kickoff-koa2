@@ -1,6 +1,10 @@
 ## `koa2-kickstarter`
 > An opinionated boilerplate for koa v2 with batteries included.
 
+##### Requirements
+- Node v7.7.2
+- NPM v4.1.2
+
 ### Setup
 ```bash
   # clone the repository
