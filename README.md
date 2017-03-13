@@ -52,6 +52,7 @@ And many more small packages.
 - `npm run watch` - starts the server with hot-reloading
 
 **Suggestion:** To turn on debug messages, set `DEBUG` environment variable to `kickstarter:*`
+- `DEBUG=kickstarter:* npm run watch`
 
 ### License
 

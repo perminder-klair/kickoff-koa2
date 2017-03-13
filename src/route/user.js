@@ -5,7 +5,7 @@ import compose from 'koa-compose';
 import * as Ctrl from '../controller/user';
 
 const router = new Router({
-    prefix: '/user',
+    prefix: '/users',
 });
 
 router.get('/', Ctrl.get);
