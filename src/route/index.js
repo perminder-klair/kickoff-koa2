@@ -4,5 +4,5 @@ import compose from 'koa-compose';
 import user from './user';
 
 export default () => compose([
-  user(),
+    user(),
 ]);

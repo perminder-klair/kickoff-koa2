@@ -1,8 +1,8 @@
 const users = [
-  'ava',
-  'boyd',
-  'raylan',
-  'winona',
+    'ava',
+    'boyd',
+    'raylan',
+    'winona',
 ];
 
 export const getUsers = () => users;
