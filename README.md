@@ -61,3 +61,7 @@ And many more small packages.
 ### License
 
 [MIT](https://raw.githubusercontent.com/umayr/koa2-kickstarter/master/LICENSE?token=AC7fzOqmYJf5mPTsJ9sWZ6QPNSfuBhLlks5XROMFwA%3D%3D) - Umayr Shahid <<umayrr@hotmail.co.uk>>
+
+### Resources
+
+- https://github.com/entria/koa-passport-mongoose-graphql/blob/master/src/server/routes/api/user.js

@@ -11,13 +11,16 @@ import loggerMiddleware from 'koa-bunyan-logger';
 import requestMiddleware from './middleware/request';
 import errorMiddleware from './middleware/error';
 
-import './service/passport';
+import auth from './utils/passport';
 import routeMiddleware from './route';
 
 import conf from './conf';
+import connectDatabase from './utils/mongoose';
 
 const app = new Koa();
 const d = debug('kickstarter:root');
+
+connectDatabase(conf.get('mongodb'));
 
 app.keys = ['your-session-secret'];
 app.use(convert(session()));
@@ -30,6 +33,7 @@ app.use(requestMiddleware());
 app.use(errorMiddleware());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(auth());
 
 // Registers routes via middleware
 app.use(routeMiddleware());

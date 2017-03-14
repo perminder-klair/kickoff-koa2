@@ -9,7 +9,7 @@ const router = new Router({
 });
 
 router.post('/login', Ctrl.login);
-router.get('/info', Ctrl.userInfo);
+router.get('/me', Ctrl.me);
 
 const routes = router.routes();
 const allowedMethods = router.allowedMethods({

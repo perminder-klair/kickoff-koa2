@@ -21,6 +21,18 @@ const conf = convict({
         default: 4000,
         env: 'PORT',
     },
+    mongodb: {
+        doc: 'URL to mongodb.',
+        format: String,
+        default: '',
+        env: 'MONGODB',
+    },
+    jwtSecret: {
+        doc: 'JWT secret.',
+        format: String,
+        default: 'my-super-secure-secret',
+        env: 'JWTSECRET',
+    }
 });
 const d = debug('kickstarter:conf');
 const env = conf.get('env');
