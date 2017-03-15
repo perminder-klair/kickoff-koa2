@@ -56,6 +56,8 @@
 - [Nodemon](https://github.com/remy/nodemon) Restart the server automatically (hot-reloading).
 - [Passport.js](https://github.com/jaredhanson/passport) Simple, unobtrusive authentication for Node.js.
 - [Mongoose](https://github.com/Automattic/mongoose) MongoDB object modeling designed to work in an asynchronous environment.
+- [Nodemailer](https://github.com/nodemailer/nodemailer) Send e-mails with Node.JS – easy as cake!
+- [AWS SDK](https://github.com/aws/aws-sdk-js) AWS SDK for JavaScript in the browser and Node.js.
 
 And many more small packages.
 
