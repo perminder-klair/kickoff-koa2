@@ -1,7 +1,9 @@
 ## `koa2-kickstarter`
+
 > An opinionated boilerplate for koa v2 with batteries included.
 
 ##### Requirements
+
 - Node v7.7.2
 - NPM v4.1.2
 
@@ -27,6 +29,7 @@
 │   ├── middleware      # folder with all middlewares
 │   ├── route           # wraps all the routes and exports a single composed middleware
 │   └── service         # contains all the service logic
+│   └── utils           # contains all extra utilities
 └── test                # unit tests
 ```
 
@@ -57,10 +60,6 @@ And many more small packages.
 
 **Suggestion:** To turn on debug messages, set `DEBUG` environment variable to `kickstarter:*`
 - `DEBUG=kickstarter:* npm run watch`
-
-### License
-
-[MIT](https://raw.githubusercontent.com/umayr/koa2-kickstarter/master/LICENSE?token=AC7fzOqmYJf5mPTsJ9sWZ6QPNSfuBhLlks5XROMFwA%3D%3D) - Umayr Shahid <<umayrr@hotmail.co.uk>>
 
 ### Resources
 

@@ -1,52 +1,52 @@
 {
-  "name": "koa2-kickstarter",
-  "version": "1.0.0",
-  "description": "An opinionated boilerplate for koa v2 with batteries included",
-  "main": "src/index.js",
-  "scripts": {
-    "pretest": "eslint src || true",
-    "test": "ava -v",
-    "start": "node bin/server",
-    "watch": "nodemon bin/server",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
-  },
-  "author": "Umayr Shahid <umayrr@hotmail.co.uk>",
-  "license": "MIT",
-  "dependencies": {
-    "babel-core": "^6.23.1",
-    "babel-preset-koa2-node7": "^0.1.0",
-    "boom": "^4.2.0",
-    "convict": "^2.0.0",
-    "debug": "^2.6.2",
-    "jsonwebtoken": "^7.3.0",
-    "koa": "^2.1.0",
-    "koa-bodyparser": "^4.1.0",
-    "koa-bunyan-logger": "^2.0.0-pre1",
-    "koa-compose": "^3.1.0",
-    "koa-convert": "^1.2.0",
-    "koa-generic-session": "^1.11.5",
-    "koa-json": "^2.0.2",
-    "koa-passport": "^3.0.0",
-    "koa-router": "^7.0.1",
-    "mongoose": "^4.9.0",
-    "mongoose-fill": "^1.6.0",
-    "passport-jwt": "^2.2.1",
-    "passport-local": "^1.0.0"
-  },
-  "devDependencies": {
-    "ava": "^0.18.2",
-    "babel-eslint": "^7.1.1",
-    "babel-runtime": "^6.23.0",
-    "eslint": "^3.17.1",
-    "eslint-config-airbnb-base": "^11.1.1",
-    "eslint-plugin-import": "^2.2.0",
-    "nodemon": "^1.11.0"
-  },
-  "ava": {
-    "babel": "inherit",
-    "require": [
-      "babel-register"
-    ]
-  }
+    "name": "koa2-kickstarter",
+    "version": "1.0.0",
+    "description": "An opinionated boilerplate for koa v2 with batteries included",
+    "main": "src/index.js",
+    "scripts": {
+        "pretest": "eslint src || true",
+        "test": "ava -v",
+        "start": "node bin/server",
+        "watch": "nodemon bin/server",
+        "lint": "eslint src",
+        "lint:fix": "eslint src --fix"
+    },
+    "author": "Parminder Klair <perminder.klair@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "babel-core": "^6.23.1",
+        "babel-preset-koa2-node7": "^0.1.0",
+        "boom": "^4.2.0",
+        "convict": "^2.0.0",
+        "debug": "^2.6.2",
+        "jsonwebtoken": "^7.3.0",
+        "koa": "^2.1.0",
+        "koa-bodyparser": "^4.1.0",
+        "koa-bunyan-logger": "^2.0.0-pre1",
+        "koa-compose": "^3.1.0",
+        "koa-convert": "^1.2.0",
+        "koa-generic-session": "^1.11.5",
+        "koa-json": "^2.0.2",
+        "koa-passport": "^3.0.0",
+        "koa-router": "^7.0.1",
+        "mongoose": "^4.9.0",
+        "mongoose-fill": "^1.6.0",
+        "passport-jwt": "^2.2.1",
+        "passport-local": "^1.0.0"
+    },
+    "devDependencies": {
+        "ava": "^0.18.2",
+        "babel-eslint": "^7.1.1",
+        "babel-runtime": "^6.23.0",
+        "eslint": "^3.17.1",
+        "eslint-config-airbnb-base": "^11.1.1",
+        "eslint-plugin-import": "^2.2.0",
+        "nodemon": "^1.11.0"
+    },
+    "ava": {
+        "babel": "inherit",
+        "require": [
+            "babel-register"
+        ]
+    }
 }
