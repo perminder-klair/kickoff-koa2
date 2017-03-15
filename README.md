@@ -1,4 +1,4 @@
-## `koa2-kickstarter`
+## `kickoff-koa2`
 
 > An opinionated boilerplate for koa v2 with batteries included.
 
@@ -6,6 +6,7 @@
 ```bash
 - Node v7.7.2
 - NPM v4.1.2
+- MongoDB
 ```
 #### Features
 ```bash
@@ -17,9 +18,9 @@
 ### Setup
 ```bash
   # clone the repository
-  λ git clone https://github.com/umayr/koa2-kickstarter
+  λ git clone https://github.com/perminder-klair/kickoff-koa2
   # change the current directory
-  λ cd koa2-kickstarter
+  λ cd kickoff-koa2
   # install all dependencies
   λ npm install
   # run the project
@@ -46,20 +47,20 @@
 
 - [Koa](https://github.com/koajs/koa) Well, duh.
 - [Koa Router](https://github.com/alexmingoia/koa-router) For routing and all.
+- [Koa Context Validator](https://github.com/chentsulin/koa-context-validator) A robust context validator for koajs.
+- [Nodemailer](https://github.com/nodemailer/nodemailer) Send e-mails with Node.JS – easy as cake!
+- [Passport.js](https://github.com/jaredhanson/passport) Simple, unobtrusive authentication for Node.js.
+- [Mongoose](https://github.com/Automattic/mongoose) MongoDB object modeling designed to work in an asynchronous environment.
+- [HTML Template Tag](https://github.com/AntonioVdlC/html-template-tag) ES6 Tagged Template for compiling HTML template
 - [Debug](https://github.com/visionmedia/debug) Debug messages in the development environment.
 - [Bunyan](https://github.com/trentm/node-bunyan) Extensive logging module.
+- [AWS SDK](https://github.com/aws/aws-sdk-js) AWS SDK for JavaScript in the browser and Node.js. strings.
 - [Ava](https://github.com/avajs/ava) For unit tests.
 - [Boom](https://github.com/hapijs/boom) HTTP Errors.
 - [Convict](https://github.com/mozilla/node-convict) Configuration management.
 - [Babel](https://github.com/babel/babel) Support ES6/ES7 features.
 - [ESLint](https://github.com/eslint/eslint/) Linting purposes (comes with extended Airbnb's base eslint configurations).
 - [Nodemon](https://github.com/remy/nodemon) Restart the server automatically (hot-reloading).
-- [Passport.js](https://github.com/jaredhanson/passport) Simple, unobtrusive authentication for Node.js.
-- [Mongoose](https://github.com/Automattic/mongoose) MongoDB object modeling designed to work in an asynchronous environment.
-- [Nodemailer](https://github.com/nodemailer/nodemailer) Send e-mails with Node.JS – easy as cake!
-- [AWS SDK](https://github.com/aws/aws-sdk-js) AWS SDK for JavaScript in the browser and Node.js.
-- [HTML Template Tag](https://github.com/AntonioVdlC/html-template-tag) ES6 Tagged Template for compiling HTML template strings.
-- [Koa Context Validator](https://github.com/chentsulin/koa-context-validator) A robust context validator for koajs.
 
 And many more small packages.
 
@@ -74,7 +75,7 @@ And many more small packages.
 **Suggestion:** To turn on debug messages, set `DEBUG` environment variable to `kickstarter:*`
 - `DEBUG=kickstarter:* npm run watch`
 
-### Some other Koa.js boilerplates
+### Some other great Koa.js boilerplates
 
 - https://github.com/umayr/koa2-kickstarter
 - https://github.com/entria/koa-passport-mongoose-graphql

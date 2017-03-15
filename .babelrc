@@ -1,5 +1,5 @@
 {
-  "presets": [
-    "koa2-node7"
-  ]
+    "presets": [
+        "koa2-node7"
+    ]
 }
