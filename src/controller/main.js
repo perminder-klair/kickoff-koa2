@@ -27,25 +27,19 @@ export const landing = (ctx) => {
 export const contact = async (ctx) => {
     const { name, email, message } = ctx.request.body;
 
-    // TODO better validation
-    if (name && email && message) {
-        const mailOptions = {
-            to: 'your@email.com',
-            from: `${name} <${email}>`,
-            subject: 'Contact Form',
-            text: message
-        };
+    const mailOptions = {
+        to: 'your@email.com',
+        from: `${name} <${email}>`,
+        subject: 'Contact Form',
+        text: message
+    };
 
-        try {
-            await transporter.sendMail(mailOptions);
-            ctx.body = { status: 'success', message: 'Contact informaton sent successfully' };
-        } catch (err) {
-            ctx.status = 400;
-            ctx.body = { status: 'error', message: 'Invalid contact informaton provided' };
-        }
-    } else {
+    try {
+        await transporter.sendMail(mailOptions);
+        ctx.body = { status: 'success', message: 'Contact informaton sent successfully' };
+    } catch (err) {
         ctx.status = 400;
-        ctx.body = { status: 'error', message: 'Invalid contact informaton provided' };
+        ctx.body = { status: 'error', message: err.message };
     }
 };
 

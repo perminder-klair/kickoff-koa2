@@ -1,6 +1,10 @@
 import Router from 'koa-router';
 import Errors from 'boom';
 import compose from 'koa-compose';
+import validator, {
+    object,
+    string,
+} from 'koa-context-validator';
 
 import * as Ctrl from '../controller/auth';
 
@@ -8,8 +12,20 @@ const router = new Router({
     prefix: '/auth',
 });
 
-router.post('/register', Ctrl.register);
-router.post('/login', Ctrl.login);
+router.post('/register', validator({
+    body: object().keys({
+        username: string().required(),
+        password: string().required(),
+        name: string().required(),
+    }),
+}), Ctrl.register);
+
+router.post('/login', validator({
+    body: object().keys({
+        username: string().required(),
+        password: string().required(),
+    }),
+}), Ctrl.login);
 
 const routes = router.routes();
 const allowedMethods = router.allowedMethods({

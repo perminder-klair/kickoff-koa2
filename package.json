@@ -29,6 +29,7 @@
         "koa-compose": "^3.1.0",
         "koa-compress": "^2.0.0",
         "koa-conditional-get": "^2.0.0",
+        "koa-context-validator": "^0.3.0",
         "koa-etag": "^3.0.0",
         "koa-json": "^2.0.2",
         "koa-json-error": "^3.1.0",

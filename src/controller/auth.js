@@ -6,29 +6,23 @@ import { generateToken } from '../utils/passport';
 export const register = async (ctx) => {
     const { name, username, password } = ctx.request.body;
 
-    // TODO - improve validation
-    if (name && username && password) {
-        let user = await User.findOne({ email: username.toLowerCase() });
-        if (!user) {
-            user = new User({
-                name,
-                email: username,
-                password
-            });
+    let user = await User.findOne({ email: username.toLowerCase() });
+    if (!user) {
+        user = new User({
+            name,
+            email: username,
+            password
+        });
 
-            await user.save();
+        await user.save();
 
-            const token = generateToken(user._id);
+        const token = generateToken(user._id);
 
-            ctx.body = { success: true, jwt: token, user };
-            ctx.login(user);
-        } else {
-            ctx.status = 400;
-            ctx.body = { status: 'error', message: 'E-mail already registered' };
-        }
+        ctx.body = { success: true, jwt: token, user };
+        ctx.login(user);
     } else {
         ctx.status = 400;
-        ctx.body = { status: 'error', message: 'Invalid email or password' };
+        ctx.body = { status: 'error', message: 'E-mail already registered' };
     }
 };
 

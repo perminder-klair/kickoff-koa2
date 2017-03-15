@@ -58,7 +58,8 @@
 - [Mongoose](https://github.com/Automattic/mongoose) MongoDB object modeling designed to work in an asynchronous environment.
 - [Nodemailer](https://github.com/nodemailer/nodemailer) Send e-mails with Node.JS – easy as cake!
 - [AWS SDK](https://github.com/aws/aws-sdk-js) AWS SDK for JavaScript in the browser and Node.js.
-- [html-template-tag](https://github.com/AntonioVdlC/html-template-tag) ES6 Tagged Template for compiling HTML template strings.
+- [HTML Template Tag](https://github.com/AntonioVdlC/html-template-tag) ES6 Tagged Template for compiling HTML template strings.
+- [Koa Context Validator](https://github.com/chentsulin/koa-context-validator) A robust context validator for koajs. Use Joi behind the scenes.
 
 And many more small packages.
 
