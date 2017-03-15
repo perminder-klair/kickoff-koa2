@@ -61,6 +61,7 @@ And many more small packages.
 **Suggestion:** To turn on debug messages, set `DEBUG` environment variable to `kickstarter:*`
 - `DEBUG=kickstarter:* npm run watch`
 
-### Resources
+### Other KoaJs boilerplates
 
-- https://github.com/entria/koa-passport-mongoose-graphql/blob/master/src/server/routes/api/user.js
+- https://github.com/umayr/koa2-kickstarter
+- https://github.com/entria/koa-passport-mongoose-graphql

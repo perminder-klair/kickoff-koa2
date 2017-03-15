@@ -34,6 +34,7 @@ const conf = convict({
         env: 'JWTSECRET',
     }
 });
+
 const d = debug('kickstarter:conf');
 const env = conf.get('env');
 try {
