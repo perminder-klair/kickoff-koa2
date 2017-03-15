@@ -39,6 +39,7 @@ export const contact = async (ctx) => {
 const S3_BUCKET = '';
 
 // Ref: https://devcenter.heroku.com/articles/s3-upload-node#uploading-directly-to-s3
+// Initialising the s3 object automatically loads the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY variables that were set into the environment earlier.
 export const upload = async (ctx) => {
     const s3 = new aws.S3();
     const fileName = ctx.request.body['file-name'];
