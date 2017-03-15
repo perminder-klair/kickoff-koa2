@@ -12,3 +12,12 @@ export const post = (ctx) => {
 export const put = (ctx) => {
     ctx.body = '[PUT]: /user';
 };
+
+export const me = async (ctx) => {
+    if (ctx.isUnauthenticated()) {
+        ctx.status = 401;
+        ctx.body = { success: false };
+    } else {
+        ctx.body = ctx.state.user;
+    }
+};

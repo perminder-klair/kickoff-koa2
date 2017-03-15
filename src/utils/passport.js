@@ -2,6 +2,7 @@ import compose from 'koa-compose';
 import passport from 'koa-passport';
 import LocalStrategy from 'passport-local';
 import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
+import jwt from 'jsonwebtoken';
 
 import conf from '../conf';
 import User from '../service/user';
@@ -26,11 +27,16 @@ passport.use(new LocalStrategy(async (username, password, done) => {
             const user = await User.findOne({ email: username.toLowerCase() });
 
             if (!user) {
-                done(null, false);
+                return done(null, false);
+            }
+
+            // check password
+            const passwordCorrect = await user.comparePassword(password);
+            if (!passwordCorrect) {
+                return done(null, false);
             }
 
             done(null, user);
-            // TODO - check password
         } else {
             done(null, false);
         }
@@ -61,5 +67,10 @@ export default function auth() {
 }
 
 export function isAuthenticated() {
-    return passport.authenticate('jwt');
+    return passport.authenticate('jwt', { session: false });
+}
+
+export function generateToken(id) {
+    const jwtToken = jwt.sign({ id }, conf.get('jwtSecret'));
+    return `JWT ${jwtToken}`;
 }

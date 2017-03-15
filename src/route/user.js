@@ -3,6 +3,7 @@ import Errors from 'boom';
 import compose from 'koa-compose';
 
 import * as Ctrl from '../controller/user';
+import { isAuthenticated } from '../utils/passport';
 
 const router = new Router({
     prefix: '/users',
@@ -11,6 +12,7 @@ const router = new Router({
 router.get('/', Ctrl.get);
 router.post('/', Ctrl.post);
 router.put('/', Ctrl.put);
+router.get('/me', isAuthenticated(), Ctrl.me);
 
 const routes = router.routes();
 const allowedMethods = router.allowedMethods({

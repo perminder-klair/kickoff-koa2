@@ -16,6 +16,7 @@
     "dependencies": {
         "babel-core": "^6.23.1",
         "babel-preset-koa2-node7": "^0.1.0",
+        "bcrypt": "^1.0.2",
         "boom": "^4.2.0",
         "convict": "^2.0.0",
         "debug": "^2.6.2",

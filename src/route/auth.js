@@ -8,8 +8,8 @@ const router = new Router({
     prefix: '/auth',
 });
 
+router.post('/register', Ctrl.register);
 router.post('/login', Ctrl.login);
-router.get('/me', Ctrl.me);
 
 const routes = router.routes();
 const allowedMethods = router.allowedMethods({
