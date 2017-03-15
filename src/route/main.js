@@ -7,6 +7,7 @@ import { isAuthenticated } from '../utils/passport';
 
 const router = new Router();
 
+router.get('/', Ctrl.landing);
 router.post('/contact', Ctrl.contact);
 router.post('/upload', isAuthenticated(), Ctrl.upload);
 

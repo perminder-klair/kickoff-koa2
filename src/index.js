@@ -1,9 +1,13 @@
 import Koa from 'koa';
 import debug from 'debug';
 import passport from 'koa-passport';
-import convert from 'koa-convert';
-import session from 'koa-generic-session';
 import bodyParser from 'koa-bodyparser';
+import jsonError from 'koa-json-error';
+import conditional from 'koa-conditional-get';
+import etag from 'koa-etag';
+import compress from 'koa-compress';
+import zlib from 'zlib';
+import { omit } from 'underscore';
 
 import jsonMiddleware from 'koa-json';
 import loggerMiddleware from 'koa-bunyan-logger';
@@ -22,17 +26,22 @@ const d = debug('kickstarter:root');
 
 connectDatabase(conf.get('mongodb'));
 
-app.keys = ['your-session-secret'];
-app.use(convert(session()));
-
 // Register middleware
 app.use(bodyParser());
+app.use(conditional());
+app.use(etag());
+app.use(compress({
+    flush: zlib.Z_SYNC_FLUSH
+}));
 app.use(jsonMiddleware());
+app.use(jsonError({
+    // Avoid showing the stacktrace in 'production' env
+    postFormat: (e, obj) => process.env.NODE_ENV === 'production' ? omit(obj, 'stack') : obj
+}));
 app.use(loggerMiddleware());
 app.use(requestMiddleware());
 app.use(errorMiddleware());
 app.use(passport.initialize());
-app.use(passport.session());
 app.use(auth());
 
 // Registers routes via middleware

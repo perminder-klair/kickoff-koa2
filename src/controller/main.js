@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import aws from 'aws-sdk';
+import html from 'html-template-tag';
 
 import conf from '../conf';
 
@@ -10,6 +11,18 @@ const transporter = nodemailer.createTransport({
         pass: conf.get('mailerPassword')
     }
 });
+
+export const landing = (ctx) => {
+    ctx.body = html`<!DOCTYPE html>
+    <html>
+    <head>
+        <title>API</title>
+    </head>
+    <body>
+        <h1>Welcome to API!</h1>
+    </body>
+    </html>`;
+};
 
 export const contact = async (ctx) => {
     const { name, email, message } = ctx.request.body;

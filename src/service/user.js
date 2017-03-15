@@ -1,6 +1,8 @@
 import mongoose from 'mongoose-fill';
 import bcrypt from 'bcrypt';
 
+mongoose.Promise = global.Promise;
+
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
