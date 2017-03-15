@@ -2,11 +2,18 @@
 
 > An opinionated boilerplate for koa v2 with batteries included.
 
-##### Requirements
-
+#### Requirements
+```bash
 - Node v7.7.2
 - NPM v4.1.2
-
+```
+#### Features
+```bash
+- Local Authentication using Email and Password
+- MVC Structure
+- Contact Form (powered by Mailgun, Sendgrid or Mandrill)
+- Image upload using Amazon S3
+```
 ### Setup
 ```bash
   # clone the repository
@@ -47,6 +54,8 @@
 - [Babel](https://github.com/babel/babel) Support ES6/ES7 features.
 - [ESLint](https://github.com/eslint/eslint/) Linting purposes (comes with extended Airbnb's base eslint configurations).
 - [Nodemon](https://github.com/remy/nodemon) Restart the server automatically (hot-reloading).
+- [Passport.js](https://github.com/jaredhanson/passport) Simple, unobtrusive authentication for Node.js.
+- [Mongoose](https://github.com/Automattic/mongoose) MongoDB object modeling designed to work in an asynchronous environment.
 
 And many more small packages.
 

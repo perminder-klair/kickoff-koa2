@@ -5,14 +5,6 @@ export const get = async (ctx) => {
     ctx.body = { users, time: Date.now() };
 };
 
-export const post = (ctx) => {
-    ctx.body = '[POST]: /user';
-};
-
-export const put = (ctx) => {
-    ctx.body = '[PUT]: /user';
-};
-
 export const me = async (ctx) => {
     if (ctx.isUnauthenticated()) {
         ctx.status = 401;
@@ -20,4 +12,14 @@ export const me = async (ctx) => {
     } else {
         ctx.body = ctx.state.user;
     }
+};
+
+// https://github.com/sahat/hackathon-starter/blob/master/controllers/user.js
+
+export const updateMe = (ctx) => {
+    ctx.body = '[PUT]: /users/me - TODO';
+};
+
+export const passwordReset = (ctx) => {
+    ctx.body = '[GET]: /password/reset - TODO';
 };

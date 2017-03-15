@@ -32,6 +32,18 @@ const conf = convict({
         format: String,
         default: 'my-super-secure-secret',
         env: 'JWTSECRET',
+    },
+    mailerUser: {
+        doc: 'Mailer user.',
+        format: String,
+        default: '',
+        env: 'MAILER_USER',
+    },
+    mailerPassword: {
+        doc: 'Mailer password.',
+        format: String,
+        default: '',
+        env: 'MAILER_PASSWORD',
     }
 });
 

@@ -2,17 +2,13 @@ import Router from 'koa-router';
 import Errors from 'boom';
 import compose from 'koa-compose';
 
-import * as Ctrl from '../controller/user';
+import * as Ctrl from '../controller/main';
 import { isAuthenticated } from '../utils/passport';
 
-const router = new Router({
-    prefix: '/users',
-});
+const router = new Router();
 
-router.get('/', Ctrl.get);
-router.get('/me', isAuthenticated(), Ctrl.me);
-router.put('/me', isAuthenticated(), Ctrl.updateMe);
-router.get('/password/reset', isAuthenticated(), Ctrl.passwordReset);
+router.post('/contact', Ctrl.contact);
+router.post('/upload', isAuthenticated(), Ctrl.upload);
 
 const routes = router.routes();
 const allowedMethods = router.allowedMethods({
