@@ -11,7 +11,7 @@
 ```bash
 - Local Authentication using Email and Password
 - MVC Structure
-- Contact Form (powered by Mailgun, Sendgrid or Mandrill)
+- Contact form endpoint (powered by Mailgun, Sendgrid or Mandrill)
 - Image upload using Amazon S3
 ```
 ### Setup
@@ -59,7 +59,7 @@
 - [Nodemailer](https://github.com/nodemailer/nodemailer) Send e-mails with Node.JS – easy as cake!
 - [AWS SDK](https://github.com/aws/aws-sdk-js) AWS SDK for JavaScript in the browser and Node.js.
 - [HTML Template Tag](https://github.com/AntonioVdlC/html-template-tag) ES6 Tagged Template for compiling HTML template strings.
-- [Koa Context Validator](https://github.com/chentsulin/koa-context-validator) A robust context validator for koajs. Use Joi behind the scenes.
+- [Koa Context Validator](https://github.com/chentsulin/koa-context-validator) A robust context validator for koajs.
 
 And many more small packages.
 
