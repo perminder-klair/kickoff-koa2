@@ -48,7 +48,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4MmYzOTBlMzM0ODMyZGRiZTlkNmZhNiIsImlhdCI6MTQ4OTU5MDI4MH0.3WI26o1v-ctQ66dRPNl2YkNJSEBxmWt1E4uMI5Sf2mM",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4Yzk2NDI4M2Q0M2ZiNDBiYTMwMWZiMSIsImlhdCI6MTQ4OTYxNzIxMX0.GOD6Umhf5Vzv-mho0MEcP-UGz8DBLus-0zUlZjwo6Kk",
 						"description": ""
 					}
 				],
@@ -151,8 +151,29 @@
 			"request": {
 				"url": "http://localhost:4000/upload",
 				"method": "POST",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU4Yzk2NDI4M2Q0M2ZiNDBiYTMwMWZiMSIsImlhdCI6MTQ4OTYxNzIxMX0.GOD6Umhf5Vzv-mho0MEcP-UGz8DBLus-0zUlZjwo6Kk",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"enabled": true,
+							"src": "460x280.gif"
+						}
+					]
+				},
 				"description": ""
 			},
 			"response": []
