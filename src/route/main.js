@@ -19,7 +19,7 @@ router.post('/contact', validator({
         email: string().required(),
         message: string().required(),
     }),
-}), Ctrl.contact);
+}, { stripUnknown: true }), Ctrl.contact);
 
 router.post('/upload', isAuthenticated(), Ctrl.upload);
 

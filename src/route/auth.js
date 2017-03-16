@@ -18,14 +18,14 @@ router.post('/register', validator({
         password: string().required(),
         name: string().required(),
     }),
-}), Ctrl.register);
+}, { stripUnknown: true }), Ctrl.register);
 
 router.post('/login', validator({
     body: object().keys({
         username: string().required(),
         password: string().required(),
     }),
-}), Ctrl.login);
+}, { stripUnknown: true }), Ctrl.login);
 
 const routes = router.routes();
 const allowedMethods = router.allowedMethods({
