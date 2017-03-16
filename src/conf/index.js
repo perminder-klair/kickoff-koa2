@@ -33,17 +33,34 @@ const conf = convict({
         default: 'my-super-secure-secret',
         env: 'JWTSECRET',
     },
-    mailerUser: {
-        doc: 'Mailer user.',
-        format: String,
-        default: '',
-        env: 'MAILER_USER',
+    mailer: {
+        user: {
+            doc: 'Mailer user.',
+            format: String,
+            default: '',
+        },
+        password: {
+            doc: 'Mailer password.',
+            format: String,
+            default: '',
+        }
     },
-    mailerPassword: {
-        doc: 'Mailer password.',
-        format: String,
-        default: '',
-        env: 'MAILER_PASSWORD',
+    s3: {
+        bucket: {
+            doc: 'S3 Bucket name.',
+            format: String,
+            default: 'as',
+        },
+        key: {
+            doc: 'S3 AWS_ACCESS_KEY_ID.',
+            format: String,
+            default: 'asd',
+        },
+        secret: {
+            doc: 'S3 AWS_SECRET_ACCESS_KEY.',
+            format: String,
+            default: 'asd',
+        }
     }
 });
 
