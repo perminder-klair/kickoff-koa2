@@ -44,7 +44,7 @@ export const contact = async (ctx) => {
     }
 };
 
-// Ref: https://devcenter.heroku.com/articles/s3-upload-node#uploading-directly-to-s3
+// Tutorial: https://devcenter.heroku.com/articles/s3-upload-node#uploading-directly-to-s3
 export const upload = async (ctx) => {
     const s3 = new aws.S3({ accessKeyId: conf.get('s3.key'), secretAccessKey: conf.get('s3.secret') });
 

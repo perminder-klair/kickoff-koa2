@@ -4,16 +4,16 @@
 
 #### Requirements
 ```bash
-- Node v7.7.2
-- NPM v4.1.2
+- Node >=v7.7.2
+- NPM >=v4.1.2
 - MongoDB
 ```
 #### Features
 ```bash
-- Local Authentication using Email and Password
-- MVC Structure
-- Contact form endpoint (powered by Mailgun, Sendgrid or Mandrill)
-- Image upload using Amazon S3
+- Local Authentication using Email and Password (Login, Register)
+- Contact form request (powered by Mailgun, Sendgrid or Mandrill)
+- File upload using Amazon S3
+- Authorised routes using JWT tokens (Get current logged in data, profile update, password reset)
 ```
 ### Setup
 ```bash

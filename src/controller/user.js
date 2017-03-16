@@ -15,11 +15,11 @@ export const me = async (ctx) => {
 };
 
 // https://github.com/sahat/hackathon-starter/blob/master/controllers/user.js
-
+// TODO
 export const updateMe = (ctx) => {
     ctx.body = '[PUT]: /users/me - TODO';
 };
-
+// TODO
 export const passwordReset = (ctx) => {
     ctx.body = '[GET]: /password/reset - TODO';
 };

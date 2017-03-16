@@ -49,17 +49,17 @@ const conf = convict({
         bucket: {
             doc: 'S3 Bucket name.',
             format: String,
-            default: 'as',
+            default: '',
         },
         key: {
             doc: 'S3 AWS_ACCESS_KEY_ID.',
             format: String,
-            default: 'asd',
+            default: '',
         },
         secret: {
             doc: 'S3 AWS_SECRET_ACCESS_KEY.',
             format: String,
-            default: 'asd',
+            default: '',
         }
     }
 });
