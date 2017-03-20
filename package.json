@@ -7,7 +7,7 @@
         "pretest": "eslint src || true",
         "test": "ava -v",
         "start": "node bin/server",
-        "watch": "nodemon bin/server",
+        "watch": "nodemon -w bin/server bin/server",
         "lint": "eslint src",
         "lint:fix": "eslint src --fix"
     },

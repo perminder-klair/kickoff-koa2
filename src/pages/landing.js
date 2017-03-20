@@ -8,7 +8,7 @@ export default () => (
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
         <div className="container">
-            <h1>Welcome to react app!</h1>
+            <h1>Welcome to Koajs + Reactjs app!</h1>
         </div>
     </div>
 );
