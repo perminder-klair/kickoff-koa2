@@ -1,5 +1,7 @@
 {
     "presets": [
-        "koa2-node7"
+        "koa2-node7",
+        "next/babel",
+        "stage-0"
     ]
 }

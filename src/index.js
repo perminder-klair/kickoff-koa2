@@ -8,6 +8,7 @@ import etag from 'koa-etag';
 import compress from 'koa-compress';
 import zlib from 'zlib';
 import { omit } from 'underscore';
+import next from 'next';
 
 import jsonMiddleware from 'koa-json';
 import loggerMiddleware from 'koa-bunyan-logger';
@@ -21,32 +22,39 @@ import routeMiddleware from './route';
 import conf from './conf';
 import connectDatabase from './utils/mongoose';
 
-const app = new Koa();
-const d = debug('kickstarter:root');
+const nextApp = next({ dev: true, dir: './src' });
 
-connectDatabase(conf.get('mongodb'));
+nextApp.prepare()
+.then(() => {
+    const app = new Koa();
+    const d = debug('kickstarter:root');
 
-// Register middleware
-app.use(bodyParser());
-app.use(conditional());
-app.use(etag());
-app.use(compress({
-    flush: zlib.Z_SYNC_FLUSH
-}));
-app.use(jsonMiddleware());
-app.use(jsonError({
-    // Avoid showing the stacktrace in 'production' env
-    postFormat: (e, obj) => process.env.NODE_ENV === 'production' ? omit(obj, 'stack') : obj
-}));
-app.use(loggerMiddleware());
-app.use(requestMiddleware());
-app.use(errorMiddleware());
-app.use(passport.initialize());
-app.use(auth());
+    connectDatabase(conf.get('mongodb'));
 
-// Registers routes via middleware
-app.use(routeMiddleware());
+    app.context.next = nextApp;
 
-d('current environment: %s', conf.get('env'));
-d('server started at port: %d', conf.get('port'));
-app.listen(conf.get('port'));
+    // Register middleware
+    app.use(bodyParser());
+    app.use(conditional());
+    app.use(etag());
+    app.use(compress({
+        flush: zlib.Z_SYNC_FLUSH
+    }));
+    app.use(jsonMiddleware());
+    app.use(jsonError({
+        // Avoid showing the stacktrace in 'production' env
+        postFormat: (e, obj) => process.env.NODE_ENV === 'production' ? omit(obj, 'stack') : obj
+    }));
+    app.use(loggerMiddleware());
+    app.use(requestMiddleware());
+    app.use(errorMiddleware());
+    app.use(passport.initialize());
+    app.use(auth());
+
+    // Registers routes via middleware
+    app.use(routeMiddleware());
+
+    d('current environment: %s', conf.get('env'));
+    d('server started at port: %d', conf.get('port'));
+    app.listen(conf.get('port'));
+});

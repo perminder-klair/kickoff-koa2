@@ -14,6 +14,7 @@
 - Contact form request (powered by Mailgun, Sendgrid or Mandrill)
 - File upload using Amazon S3
 - Authorised routes using JWT tokens (Get current logged in data, profile update, password reset)
+- Server-rendered frontend pages using Next.js (React)
 ```
 ### Setup
 ```bash
@@ -35,6 +36,7 @@
 │   ├── conf            # wraps configurations files
 │   ├── controller      # contains all controllers in the application
 │   ├── middleware      # folder with all middlewares
+│   ├── pages           # folder with pages using Next.js + React
 │   ├── route           # wraps all the routes and exports a single composed middleware
 │   └── service         # contains all the service logic
 │   └── utils           # contains all extra utilities
@@ -46,12 +48,12 @@
 ### Included
 
 - [Koa](https://github.com/koajs/koa) Well, duh.
+- [Next.js](https://github.com/zeit/next.js) Framework for server-rendered React apps
 - [Koa Router](https://github.com/alexmingoia/koa-router) For routing and all.
 - [Koa Context Validator](https://github.com/chentsulin/koa-context-validator) A robust context validator for koajs.
 - [Nodemailer](https://github.com/nodemailer/nodemailer) Send e-mails with Node.JS – easy as cake!
 - [Passport.js](https://github.com/jaredhanson/passport) Simple, unobtrusive authentication for Node.js.
 - [Mongoose](https://github.com/Automattic/mongoose) MongoDB object modeling designed to work in an asynchronous environment.
-- [HTML Template Tag](https://github.com/AntonioVdlC/html-template-tag) ES6 Tagged Template for compiling HTML template
 - [Debug](https://github.com/visionmedia/debug) Debug messages in the development environment.
 - [Bunyan](https://github.com/trentm/node-bunyan) Extensive logging module.
 - [AWS SDK](https://github.com/aws/aws-sdk-js) AWS SDK for JavaScript in the browser and Node.js. strings.

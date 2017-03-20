@@ -1,6 +1,5 @@
 import nodemailer from 'nodemailer';
 import aws from 'aws-sdk';
-import html from 'html-template-tag';
 import asyncBusboy from 'async-busboy';
 
 import conf from '../conf';
@@ -13,16 +12,10 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-export const landing = (ctx) => {
-    ctx.body = html`<!DOCTYPE html>
-    <html>
-    <head>
-        <title>API</title>
-    </head>
-    <body>
-        <h1>Welcome to API!</h1>
-    </body>
-    </html>`;
+export const landing = async (ctx) => {
+    // Render react + next.js page
+    await ctx.next.render(ctx.req, ctx.res, '/landing', ctx.query);
+    ctx.respond = false;
 };
 
 export const contact = async (ctx) => {
