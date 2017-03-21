@@ -1,15 +1,20 @@
 type User {
-  id: ID!
-  email: String!
+    id: ID!
+    email: String!
+    name: String
 }
+
 type Query {
-  getUserById(id: ID!): User
-  getUserByEmail(email: String!): User
+    users: [User]
+    getUserById(id: ID!): User
+    getUserByEmail(email: String!): User
 }
+
 type Mutation {
-  createUser(email: String!): User
+    createUser(email: String!): User
 }
+
 schema {
-  query: Query
-  mutation: Mutation
+    query: Query
+    mutation: Mutation
 }
