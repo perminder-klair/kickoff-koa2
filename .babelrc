@@ -4,5 +4,8 @@
         "next/babel",
         "stage-0",
         "react"
+    ],
+    "plugins": [
+        "babel-plugin-inline-import"
     ]
 }
