@@ -82,3 +82,5 @@ And many more small packages.
 - https://github.com/umayr/koa2-kickstarter
 - https://github.com/entria/koa-passport-mongoose-graphql
 - https://github.com/llambda/koa-boiler
+- https://github.com/crocodilejs/crocodile-node-mvc-framework
+
