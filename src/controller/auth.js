@@ -1,19 +1,28 @@
 import passport from 'koa-passport';
+import randomstring from 'randomstring';
 
 import User from '../service/user';
 import { generateToken } from '../utils/passport';
 
 export const register = async (ctx) => {
-    const { name, username, password } = ctx.request.body;
+    const { body } = ctx.request;
 
-    let user = await User.findOne({ email: username.toLowerCase() });
+    let user = await User.findOne({ email: body.username.toLowerCase() });
     if (!user) {
-        user = new User({
-            name,
-            email: username,
-            password
-        });
+        const data = {
+            email: body.username,
+            password: body.password,
+        };
 
+        // set profile
+        if (body.profile) {
+            data.profile = body.profile;
+        }
+
+        // set slug
+        data.slug = body.profile ? `${body.profile.firstName} ${body.profile.lastName} ${randomstring.generate(4)}` : randomstring.generate(7);
+
+        user = new User(data);
         await user.save();
 
         const token = generateToken(user._id);
@@ -26,8 +35,8 @@ export const register = async (ctx) => {
     }
 };
 
-export const login = (ctx, next) => {
-    return passport.authenticate('local', { session: false }, (user, userInfo) => {
+export const login = (ctx, next) => { // eslint-disable-line
+    return passport.authenticate('local', { session: false }, (user, userInfo) => { // eslint-disable-line
         if (userInfo === false) {
             ctx.status = 401;
             ctx.body = { success: false, message: 'Invalid email or password' };

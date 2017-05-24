@@ -77,6 +77,6 @@ try {
     d('file doesn\'t exist, loading defaults');
 }
 
-conf.validate({ strict: true });
+conf.validate({ allowed: 'strict' });
 
 export default conf;

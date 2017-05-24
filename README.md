@@ -23,9 +23,9 @@
   # change the current directory
   λ cd kickoff-koa2
   # install all dependencies
-  λ npm install
+  λ yarn install
   # run the project
-  λ npm start
+  λ yarn start
 ```
 
 ### Structure
@@ -68,17 +68,21 @@ And many more small packages.
 
 ### Scripts
 
-- `npm start` - simply starts the server
-- `npm test` - execute all unit tests
-- `npm run lint` - lints all the files in `src/` folder
-- `npm run lint:fix` - fixes all the possible linting errors
-- `npm run watch` - starts the server with hot-reloading
+- `yarn start` - simply starts the server
+- `yarn test` - execute all unit tests
+- `yarn run lint` - lints all the files in `src/` folder
+- `yarn run lint:fix` - fixes all the possible linting errors
+- `yarn run watch` - starts the server with hot-reloading
 
 **Suggestion:** To turn on debug messages, set `DEBUG` environment variable to `kickstarter:*`
-- `DEBUG=kickstarter:* npm run watch`
+- `DEBUG=kickstarter:* yarn run watch`
+
+To use Node chrome debug, make sure to install this extension
+https://chrome.google.com/webstore/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj/
 
 ### Some other great Koa.js boilerplates
 
 - https://github.com/umayr/koa2-kickstarter
 - https://github.com/entria/koa-passport-mongoose-graphql
 - https://github.com/llambda/koa-boiler
+- https://github.com/crocodilejs/crocodile-node-mvc-framework

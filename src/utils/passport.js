@@ -20,7 +20,7 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
-passport.use(new LocalStrategy(async (username, password, done) => {
+passport.use(new LocalStrategy(async (username, password, done) => { // eslint-disable-line
     try {
         // Test whether is a login using email and password
         if (username && password) {

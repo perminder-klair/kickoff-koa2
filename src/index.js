@@ -6,6 +6,10 @@ import jsonError from 'koa-json-error';
 import conditional from 'koa-conditional-get';
 import etag from 'koa-etag';
 import compress from 'koa-compress';
+import cors from 'koa-cors';
+import errorHandler from 'koa-better-error-handler';
+import responseTime from 'koa-response-time';
+import convert from 'koa-convert';
 import zlib from 'zlib';
 import { omit } from 'underscore';
 import next from 'next';
@@ -35,6 +39,12 @@ nextApp.prepare()
 
     // Register middleware
     app.use(bodyParser());
+    app.use(cors({
+        expose: [
+            'WWW-Authenticate', 'Server-Authorization',
+            'X-Pagination-Page-Count', 'X-Pagination-Current-Page', 'X-Pagination-Per-Page', 'X-Pagination-Total-Count',
+        ]
+    }));
     app.use(conditional());
     app.use(etag());
     app.use(compress({
@@ -43,13 +53,18 @@ nextApp.prepare()
     app.use(jsonMiddleware());
     app.use(jsonError({
         // Avoid showing the stacktrace in 'production' env
+        // eslint-disable-next-line
         postFormat: (e, obj) => process.env.NODE_ENV === 'production' ? omit(obj, 'stack') : obj
     }));
     app.use(loggerMiddleware());
     app.use(requestMiddleware());
     app.use(errorMiddleware());
+    app.use(convert(responseTime()));
     app.use(passport.initialize());
     app.use(auth());
+
+    // override koa's undocumented error handler
+    app.context.onerror = errorHandler;
 
     // Registers routes via middleware
     app.use(routeMiddleware());

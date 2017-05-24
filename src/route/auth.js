@@ -24,6 +24,7 @@ router.post('/login', validator({
     body: object().keys({
         username: string().required(),
         password: string().required(),
+        profile: object(),
     }),
 }, { stripUnknown: true }), Ctrl.login);
 

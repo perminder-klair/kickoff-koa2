@@ -1,6 +1,5 @@
 import nodemailer from 'nodemailer';
 import aws from 'aws-sdk';
-import asyncBusboy from 'async-busboy';
 
 import conf from '../conf';
 
@@ -38,15 +37,20 @@ export const contact = async (ctx) => {
 };
 
 // Tutorial: https://devcenter.heroku.com/articles/s3-upload-node#uploading-directly-to-s3
-export const upload = async (ctx) => {
-    const s3 = new aws.S3({ accessKeyId: conf.get('s3.key'), secretAccessKey: conf.get('s3.secret') });
+export const signS3 = async (ctx) => {
+    const s3 = new aws.S3({
+        accessKeyId: conf.get('s3.key'),
+        secretAccessKey: conf.get('s3.secret'),
+        region: conf.get('s3.region')
+    });
 
-    const { files } = await asyncBusboy(ctx.req);
+    // const { files } = await asyncBusboy(ctx.req);
     // console.log('files', files, fields);
-    const file = files[0];
+    // const file = files[0];
+    const { fileName, fileType } = ctx.request.body;
 
-    const fileName = file.filename;
-    const fileType = file.mimeType;
+    // const fileName = file.filename;
+    // const fileType = file.mimeType;
     const s3Params = {
         Bucket: conf.get('s3.bucket'),
         Key: fileName,
@@ -61,6 +65,7 @@ export const upload = async (ctx) => {
                 if (err) { reject(err); } else { resolve(url); }
             });
         });
+        // console.log('data', data);
         ctx.body = {
             signedRequest: data,
             url: `https://${conf.get('s3.bucket')}.s3.amazonaws.com/${fileName}`

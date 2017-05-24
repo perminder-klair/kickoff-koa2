@@ -1,5 +1,5 @@
-import React from 'react';
-import Head from 'next/head';
+import React from 'react'; // eslint-disable-line
+import Head from 'next/head'; // eslint-disable-line
 
 export default () => (
     <div>

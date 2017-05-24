@@ -1,5 +1,5 @@
 {
-    "extends": "airbnb",
+    "extends": "airbnb-base",
     "parser": "babel-eslint",
     "rules": {
         "strict": 0,
@@ -11,13 +11,13 @@
         "max-len": ['error', 280, 4],
         "no-param-reassign": ['error', { 'props': false }],
         "no-underscore-dangle": 0,
+        "no-restricted-syntax": 0,
         "react/jsx-indent-props": ['error', 4],
         "react/jsx-indent": ['error', 4],
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/jsx-closing-bracket-location": [2, "after-props"],
         "react/forbid-prop-types": 0,
         "react/no-did-update-set-state": 0,
-        "react/jsx-no-bind": 0,
-        "react/no-string-refs": 0
+        "react/jsx-no-bind": 0
     }
 }

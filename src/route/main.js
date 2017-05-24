@@ -21,7 +21,7 @@ router.post('/contact', validator({
     }),
 }, { stripUnknown: true }), Ctrl.contact);
 
-router.post('/upload', isAuthenticated(), Ctrl.upload);
+router.post('/signS3', isAuthenticated(), Ctrl.signS3);
 
 const routes = router.routes();
 const allowedMethods = router.allowedMethods({
