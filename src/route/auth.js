@@ -16,7 +16,7 @@ router.post('/register', validator({
     body: object().keys({
         username: string().required(),
         password: string().required(),
-        name: string().required(),
+        profile: string(),
     }),
 }, { stripUnknown: true }), Ctrl.register);
 
@@ -24,7 +24,6 @@ router.post('/login', validator({
     body: object().keys({
         username: string().required(),
         password: string().required(),
-        profile: object(),
     }),
 }, { stripUnknown: true }), Ctrl.login);
 

@@ -9,7 +9,7 @@
         "pretest": "eslint src || true",
         "test": "ava -v",
         "start": "node bin/server",
-        "watch": "nodemon --inspect --debug -w bin/server bin/server",
+        "watch": "nodemon --inspect --debug bin/server",
         "lint": "eslint src",
         "lint:fix": "eslint src --fix"
     },
@@ -21,7 +21,7 @@
         "aws-sdk": "^2.49.0",
         "babel-core": "^6.24.1",
         "babel-preset-koa2-node7": "^0.1.0",
-        "bcrypt-nodejs": "^0.0.3",
+        "bcryptjs": "^2.4.3",
         "boom": "^4.3.1",
         "convict": "^3.0.0",
         "debug": "^2.6.6",
