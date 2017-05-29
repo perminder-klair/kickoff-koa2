@@ -26,50 +26,51 @@ import routeMiddleware from './route';
 import conf from './conf';
 import connectDatabase from './utils/mongoose';
 
-const nextApp = next({ dev: true, dir: './src' });
+const dev = process.env.NODE_ENV !== 'production';
+const nextApp = next({ dev, dir: './client' });
 
 nextApp.prepare()
-.then(() => {
-    const app = new Koa();
-    const d = debug('kickstarter:root');
+    .then(() => {
+        const app = new Koa();
+        const d = debug('kickstarter:root');
 
-    connectDatabase(conf.get('mongodb'));
+        connectDatabase(conf.get('mongodb'));
 
-    app.context.next = nextApp;
+        app.context.next = nextApp;
 
-    // Register middleware
-    app.use(bodyParser());
-    app.use(cors({
-        expose: [
-            'WWW-Authenticate', 'Server-Authorization',
-            'X-Pagination-Page-Count', 'X-Pagination-Current-Page', 'X-Pagination-Per-Page', 'X-Pagination-Total-Count',
-        ]
-    }));
-    app.use(conditional());
-    app.use(etag());
-    app.use(compress({
-        flush: zlib.Z_SYNC_FLUSH
-    }));
-    app.use(jsonMiddleware());
-    app.use(jsonError({
-        // Avoid showing the stacktrace in 'production' env
-        // eslint-disable-next-line
-        postFormat: (e, obj) => process.env.NODE_ENV === 'production' ? omit(obj, 'stack') : obj
-    }));
-    app.use(loggerMiddleware());
-    app.use(requestMiddleware());
-    app.use(errorMiddleware());
-    app.use(convert(responseTime()));
-    app.use(passport.initialize());
-    app.use(auth());
+        // Register middleware
+        app.use(bodyParser());
+        app.use(cors({
+            expose: [
+                'WWW-Authenticate', 'Server-Authorization',
+                'X-Pagination-Page-Count', 'X-Pagination-Current-Page', 'X-Pagination-Per-Page', 'X-Pagination-Total-Count',
+            ]
+        }));
+        app.use(conditional());
+        app.use(etag());
+        app.use(compress({
+            flush: zlib.Z_SYNC_FLUSH
+        }));
+        app.use(jsonMiddleware());
+        app.use(jsonError({
+            // Avoid showing the stacktrace in 'production' env
+            // eslint-disable-next-line
+            postFormat: (e, obj) => process.env.NODE_ENV === 'production' ? omit(obj, 'stack') : obj
+        }));
+        app.use(loggerMiddleware());
+        app.use(requestMiddleware());
+        app.use(errorMiddleware());
+        app.use(convert(responseTime()));
+        app.use(passport.initialize());
+        app.use(auth());
 
-    // override koa's undocumented error handler
-    app.context.onerror = errorHandler;
+        // override koa's undocumented error handler
+        app.context.onerror = errorHandler;
 
-    // Registers routes via middleware
-    app.use(routeMiddleware());
+        // Registers routes via middleware
+        app.use(routeMiddleware());
 
-    d('current environment: %s', conf.get('env'));
-    d('server started at port: %d', conf.get('port'));
-    app.listen(conf.get('port'));
-});
+        d('current environment: %s', conf.get('env'));
+        d('server started at port: %d', conf.get('port'));
+        app.listen(conf.get('port'));
+    });
