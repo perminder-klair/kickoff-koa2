@@ -32,11 +32,12 @@
 ```bash
 ├── README.md           # you're here
 ├── bin                 # folder that bootstraps the application
+├── client              # contains source files
+│   ├── pages           # folder with pages using Next.js + React
 ├── src                 # contains source files
 │   ├── conf            # wraps configurations files
 │   ├── controller      # contains all controllers in the application
 │   ├── middleware      # folder with all middlewares
-│   ├── pages           # folder with pages using Next.js + React
 │   ├── route           # wraps all the routes and exports a single composed middleware
 │   └── service         # contains all the service logic
 │   └── utils           # contains all extra utilities

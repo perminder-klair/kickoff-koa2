@@ -11,12 +11,6 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-export const landing = async (ctx) => {
-    // Render react + next.js page
-    await ctx.next.render(ctx.req, ctx.res, '/landing', ctx.query);
-    ctx.respond = false;
-};
-
 export const contact = async (ctx) => {
     const { name, email, message } = ctx.request.body;
 

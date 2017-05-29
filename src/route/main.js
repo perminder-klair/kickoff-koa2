@@ -11,8 +11,6 @@ import { isAuthenticated } from '../utils/passport';
 
 const router = new Router();
 
-router.get('/', Ctrl.landing);
-
 router.post('/contact', validator({
     body: object().keys({
         name: string().required(),
