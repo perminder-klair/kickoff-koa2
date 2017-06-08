@@ -38,5 +38,4 @@ node_modules
 # Configuration files
 src/conf/*.json
 
-# Next cache
-.next
+.env

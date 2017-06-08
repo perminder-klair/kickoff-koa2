@@ -24,7 +24,7 @@ const conf = convict({
     mongodb: {
         doc: 'URL to mongodb.',
         format: String,
-        default: 'mongodb://gms:gmsgms@cockney.2.mongolayer.com:10231/gms?replicaSet=set-55e6c9795556ddd3af0005ab',
+        default: '',
         env: 'MONGODB',
     },
     jwtSecret: {

@@ -83,4 +83,9 @@ UserSchema.virtual('profile.fullName').get(function () { // eslint-disable-line
     return this.profile.firstName + ' ' + this.profile.lastName; // eslint-disable-line
 });
 
+UserSchema.statics.findBySlug = async function (slug) { // eslint-disable-line
+    const user = await this.findOne({ slug });
+    return user;
+};
+
 export default mongoose.model('User', UserSchema);

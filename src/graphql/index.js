@@ -1,10 +1,10 @@
 import { makeExecutableSchema } from 'graphql-tools';
 import { extend } from 'underscore';
 
-import CustomersSchema from './customers/schema';
-import CustomersResolvers from './customers/resolvers';
+import UsersSchema from './users/schema';
+import UsersResolvers from './users/resolvers';
 
 export default makeExecutableSchema({
-    typeDefs: [CustomersSchema],
-    resolvers: extend(CustomersResolvers),
+    typeDefs: [UsersSchema],
+    resolvers: extend(UsersResolvers),
 });
