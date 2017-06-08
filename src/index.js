@@ -59,11 +59,6 @@ app.use(auth());
 // override koa's undocumented error handler
 app.context.onerror = errorHandler;
 
-// Registers routes via middleware
-app.use(async (ctx, nextt) => {
-    ctx.res.statusCode = 200;
-    await nextt();
-});
 app.use(routeMiddleware());
 
 d('current environment: %s', conf.get('env'));

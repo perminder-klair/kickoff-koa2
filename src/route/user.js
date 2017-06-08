@@ -19,12 +19,15 @@ router.put('/me', isAuthenticated(), validator({
         profile: object(),
     }),
 }, { stripUnknown: true }), Ctrl.updateMe);
+
 router.get('/password/reset', isAuthenticated(), Ctrl.passwordReset);
+
 router.get('/:slug', validator({
     params: object().keys({
         slug: string().required(),
     }),
 }, { stripUnknown: true }), Ctrl.single);
+
 router.get('/', Ctrl.get);
 
 const routes = router.routes();
