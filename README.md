@@ -14,7 +14,7 @@
 - Contact form request (powered by Mailgun, Sendgrid or Mandrill)
 - File upload using Amazon S3
 - Authorised routes using JWT tokens (Get current logged in data, profile update, password reset)
-- Server-rendered frontend pages using Next.js (React)
+- GraphQL loaded (Apollo Data)
 ```
 ### Setup
 ```bash
@@ -32,11 +32,10 @@
 ```bash
 ├── README.md           # you're here
 ├── bin                 # folder that bootstraps the application
-├── client              # contains source files
-│   ├── pages           # folder with pages using Next.js + React
 ├── src                 # contains source files
 │   ├── conf            # wraps configurations files
 │   ├── controller      # contains all controllers in the application
+│   ├── graphql         # contains graphql schema and resolvers
 │   ├── middleware      # folder with all middlewares
 │   ├── route           # wraps all the routes and exports a single composed middleware
 │   └── service         # contains all the service logic
