@@ -48,12 +48,12 @@
 ### Included
 
 - [Koa](https://github.com/koajs/koa) Well, duh.
-- [Next.js](https://github.com/zeit/next.js) Framework for server-rendered React apps
 - [Koa Router](https://github.com/alexmingoia/koa-router) For routing and all.
 - [Koa Context Validator](https://github.com/chentsulin/koa-context-validator) A robust context validator for koajs.
 - [Nodemailer](https://github.com/nodemailer/nodemailer) Send e-mails with Node.JS – easy as cake!
 - [Passport.js](https://github.com/jaredhanson/passport) Simple, unobtrusive authentication for Node.js.
 - [Mongoose](https://github.com/Automattic/mongoose) MongoDB object modeling designed to work in an asynchronous environment.
+- [Apollo data](https://www.apollodata.com/) Tools & Products for GraphQL
 - [Debug](https://github.com/visionmedia/debug) Debug messages in the development environment.
 - [Bunyan](https://github.com/trentm/node-bunyan) Extensive logging module.
 - [AWS SDK](https://github.com/aws/aws-sdk-js) AWS SDK for JavaScript in the browser and Node.js. strings.
