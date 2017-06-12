@@ -1,6 +1,11 @@
 import convict from 'convict';
 import fs from 'fs';
 import debug from 'debug';
+import dotenv from 'dotenv';
+
+
+// to load .env file
+dotenv.config();
 
 const conf = convict({
     env: {
