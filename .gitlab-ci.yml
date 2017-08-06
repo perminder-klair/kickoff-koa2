@@ -1,0 +1,36 @@
+# https://jeroenpelgrims.com/pushing-to-dokku-from-gitlab-ci
+
+variables:
+  DOKKU_HOST: 'SERVER-IP-HERE'
+  PROJECT_NAME: 'APP-NAME-HERE'
+
+image: node:7.7.2
+
+cache:
+  paths:
+    - node_modules/
+    - .yarn
+
+before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - mkdir -p ~/.ssh
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+stages:
+  - tests
+  - deploy
+
+all_tests:
+  stage: tests
+  script:
+    - yarn config set cache-folder .yarn
+    - yarn install
+    - yarn run lint
+
+deploy_to_dokku:
+  stage: deploy
+  script:
+#    - ssh dokku@$DOKKU_HOST # debug
+    - git push dokku@$DOKKU_HOST:$PROJECT_NAME master

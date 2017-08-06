@@ -32,23 +32,33 @@ connectDatabase(conf.get('mongodb'));
 
 // Register middleware
 app.use(bodyParser());
-app.use(cors({
-    expose: [
-        'WWW-Authenticate', 'Server-Authorization',
-        'X-Pagination-Page-Count', 'X-Pagination-Current-Page', 'X-Pagination-Per-Page', 'X-Pagination-Total-Count',
-    ]
-}));
+app.use(
+	cors({
+		expose: [
+			'WWW-Authenticate',
+			'Server-Authorization',
+			'X-Pagination-Page-Count',
+			'X-Pagination-Current-Page',
+			'X-Pagination-Per-Page',
+			'X-Pagination-Total-Count',
+		],
+	}),
+);
 app.use(conditional());
 app.use(etag());
-app.use(compress({
-    flush: zlib.Z_SYNC_FLUSH
-}));
+app.use(
+	compress({
+		flush: zlib.Z_SYNC_FLUSH,
+	}),
+);
 app.use(jsonMiddleware());
-app.use(jsonError({
-    // Avoid showing the stacktrace in 'production' env
-    // eslint-disable-next-line
+app.use(
+	jsonError({
+		// Avoid showing the stacktrace in 'production' env
+		// eslint-disable-next-line
     postFormat: (e, obj) => process.env.NODE_ENV === 'production' ? omit(obj, 'stack') : obj
-}));
+	}),
+);
 app.use(loggerMiddleware());
 app.use(requestMiddleware());
 app.use(errorMiddleware());
