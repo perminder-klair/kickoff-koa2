@@ -8,72 +8,72 @@ import conf from '../conf';
 import User from '../service/user';
 
 passport.serializeUser((user, done) => {
-	done(null, user.id);
+  done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
-	try {
-		const user = await User.findById(id);
-		done(null, user);
-	} catch (err) {
-		done(err);
-	}
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
 });
 
 passport.use(new LocalStrategy(async (username, password, done) => { // eslint-disable-line
-		try {
-			// Test whether is a login using email and password
-			if (username && password) {
-				const user = await User.findOne({
-					email: username.toLowerCase(),
-				});
+    try {
+      // Test whether is a login using email and password
+      if (username && password) {
+        const user = await User.findOne({
+          email: username.toLowerCase(),
+        });
 
-				if (!user) {
-					return done(null, false);
-				}
+        if (!user) {
+          return done(null, false);
+        }
 
-				// check password
-				const passwordCorrect = await user.comparePassword(password);
-				if (!passwordCorrect) {
-					return done(null, false);
-				}
+        // check password
+        const passwordCorrect = await user.comparePassword(password);
+        if (!passwordCorrect) {
+          return done(null, false);
+        }
 
-				done(null, user);
-			} else {
-				done(null, false);
-			}
-		} catch (error) {
-			done(error);
-		}
-	}),
+        done(null, user);
+      } else {
+        done(null, false);
+      }
+    } catch (error) {
+      done(error);
+    }
+  }),
 );
 
 const jwtOpts = {
-	jwtFromRequest: ExtractJwt.fromAuthHeader(),
-	secretOrKey: conf.get('jwtSecret'),
+  jwtFromRequest: ExtractJwt.fromAuthHeader(),
+  secretOrKey: conf.get('jwtSecret'),
 };
 
 passport.use(
-	new JWTStrategy(jwtOpts, async (jwtPayload, done) => {
-		const user = await User.findById(jwtPayload.id);
+  new JWTStrategy(jwtOpts, async (jwtPayload, done) => {
+    const user = await User.findById(jwtPayload.id);
 
-		if (user) {
-			done(null, user);
-		} else {
-			done(null, false);
-		}
-	}),
+    if (user) {
+      done(null, user);
+    } else {
+      done(null, false);
+    }
+  }),
 );
 
 export default function auth() {
-	return compose([passport.initialize()]);
+  return compose([passport.initialize()]);
 }
 
 export function isAuthenticated() {
-	return passport.authenticate('jwt', { session: false });
+  return passport.authenticate('jwt', { session: false });
 }
 
 export function generateToken(id) {
-	const jwtToken = jwt.sign({ id }, conf.get('jwtSecret'));
-	return `JWT ${jwtToken}`;
+  const jwtToken = jwt.sign({ id }, conf.get('jwtSecret'));
+  return `JWT ${jwtToken}`;
 }

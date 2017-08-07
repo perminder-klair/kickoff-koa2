@@ -9,27 +9,27 @@ import { isAuthenticated } from '../utils/passport';
 const router = new Router();
 
 router.post(
-	'/contact',
-	validator(
-		{
-			body: object().keys({
-				name: string().required(),
-				email: string().required(),
-				message: string().required(),
-			}),
-		},
-		{ stripUnknown: true },
-	),
-	Ctrl.contact,
+  '/contact',
+  validator(
+    {
+      body: object().keys({
+        name: string().required(),
+        email: string().required(),
+        message: string().required(),
+      }),
+    },
+    { stripUnknown: true },
+  ),
+  Ctrl.contact,
 );
 
 router.post('/signS3', isAuthenticated(), Ctrl.signS3);
 
 const routes = router.routes();
 const allowedMethods = router.allowedMethods({
-	throw: true,
-	notImplemented: () => new Errors.notImplemented(),
-	methodNotAllowed: () => new Errors.methodNotAllowed(),
+  throw: true,
+  notImplemented: () => new Errors.notImplemented(),
+  methodNotAllowed: () => new Errors.methodNotAllowed(),
 });
 
 export default () => compose([routes, allowedMethods]);

@@ -20,9 +20,7 @@
             "trailingComma": "all",
             "bracketSpacing": true,
             "jsxBracketSameLine": true,
-            "parser": "flow",
-            "useTabs": true,
-            "tabWidth": 4
+            "parser": "flow"
         }]
     }
 }
