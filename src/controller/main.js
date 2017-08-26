@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import aws from 'aws-sdk';
+import html from 'html-template-tag';
 
 import conf from '../conf';
 
@@ -11,7 +12,19 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const contact = async (ctx) => {
+export const landing = ctx => {
+  ctx.body = html`<!DOCTYPE html>
+    <html>
+    <head>
+        <title>API</title>
+    </head>
+    <body>
+        <h1>Welcome to API!</h1>
+    </body>
+    </html>`;
+};
+
+export const contact = async ctx => {
   const { name, email, message } = ctx.request.body;
 
   const mailOptions = {
@@ -34,7 +47,7 @@ export const contact = async (ctx) => {
 };
 
 // Tutorial: https://devcenter.heroku.com/articles/s3-upload-node#uploading-directly-to-s3
-export const signS3 = async (ctx) => {
+export const signS3 = async ctx => {
   const s3 = new aws.S3({
     accessKeyId: conf.get('s3.key'),
     secretAccessKey: conf.get('s3.secret'),

@@ -38,4 +38,5 @@ node_modules
 # Configuration files
 src/conf/*.json
 
+# Environment file
 .env
