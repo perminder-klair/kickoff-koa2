@@ -1,5 +1,7 @@
 ## `kickoff-koa2`
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/perminder-klair/kickoff-koa2.svg)](https://greenkeeper.io/)
+
 > An opinionated boilerplate for koa v2 with batteries included.
 
 #### Requirements
