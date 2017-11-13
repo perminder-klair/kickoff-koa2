@@ -2,7 +2,7 @@ import User from '../../service/user';
 
 export default {
   Query: {
-    allUsers: async () => User.find().sort('-createdAt'),
+    users: async () => User.find().sort('-createdAt'),
   },
   Mutation: {
     addUser: async (root, args) => {

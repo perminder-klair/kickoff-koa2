@@ -13,7 +13,7 @@ const typeDefs = `
     # This type specifies the entry points into our API. In this case
     # there is only one - "Users" - which returns a list of users.
     type Query {
-       allUsers: [User]    # "[]" means this is a list of users
+        users: [User]    # "[]" means this is a list of users
     }
 
     # The mutation root type, used to define all mutations.
