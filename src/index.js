@@ -72,5 +72,5 @@ app.context.onerror = errorHandler;
 app.use(routeMiddleware());
 
 d('current environment: %s', conf.get('env'));
-d('server started at port: %d', conf.get('port'));
 app.listen(conf.get('port'));
+console.log('server started at port: %d', conf.get('port')); // eslint-disable-line

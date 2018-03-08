@@ -4,7 +4,7 @@ import randomstring from 'randomstring';
 import User from '../service/user';
 import { generateToken } from '../utils/passport';
 
-export const register = async (ctx) => {
+export const register = async ctx => {
   const { body } = ctx.request;
 
   let user = await User.findOne({ email: body.username.toLowerCase() });
@@ -21,8 +21,9 @@ export const register = async (ctx) => {
 
     // set slug
     data.slug = body.profile
-      ? `${body.profile.firstName} ${body.profile
-          .lastName} ${randomstring.generate(4)}`
+      ? `${body.profile.firstName} ${
+          body.profile.lastName
+        } ${randomstring.generate(4)}`
       : randomstring.generate(7);
 
     user = new User(data);

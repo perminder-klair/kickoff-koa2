@@ -5,7 +5,7 @@ import User from '../service/user';
  * @param  {[type]}  ctx [description]
  * @return {Promise}     [description]
  */
-export const get = async (ctx) => {
+export const get = async ctx => {
   const users = await User.find();
   ctx.body = { users, time: Date.now() };
 };
@@ -15,7 +15,7 @@ export const get = async (ctx) => {
  * @param  {[type]}  ctx [description]
  * @return {Promise}     [description]
  */
-export const single = async (ctx) => {
+export const single = async ctx => {
   const { slug } = ctx.params;
 
   const user = await User.findOne({ slug });
@@ -32,7 +32,7 @@ export const single = async (ctx) => {
  * @param  {[type]}  ctx [description]
  * @return {Promise}     [description]
  */
-export const me = async (ctx) => {
+export const me = async ctx => {
   if (ctx.isUnauthenticated()) {
     ctx.status = 401;
     ctx.body = { success: false };
@@ -46,7 +46,7 @@ export const me = async (ctx) => {
  * @param  {[type]}  ctx [description]
  * @return {Promise}     [description]
  */
-export const updateMe = async (ctx) => {
+export const updateMe = async ctx => {
   const { body } = ctx.request;
   const objUpdate = {};
   const objFind = { _id: ctx.state.user._id };
@@ -70,6 +70,6 @@ export const updateMe = async (ctx) => {
 };
 
 // TODO
-export const passwordReset = (ctx) => {
+export const passwordReset = ctx => {
   ctx.body = '[GET]: /password/reset - TODO';
 };

@@ -49,7 +49,7 @@ passport.use(new LocalStrategy(async (username, password, done) => { // eslint-d
 );
 
 const jwtOpts = {
-  jwtFromRequest: ExtractJwt.fromAuthHeader(),
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: conf.get('jwtSecret'),
 };
 

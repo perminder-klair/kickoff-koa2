@@ -1,7 +1,7 @@
 import Router from 'koa-router';
 import Errors from 'boom';
 import compose from 'koa-compose';
-import { graphqlKoa, graphiqlKoa } from 'graphql-server-koa';
+import { graphqlKoa, graphiqlKoa } from 'apollo-server-koa';
 
 import schema from '../graphql';
 // import { isAuthenticated } from '../utils/passport';
