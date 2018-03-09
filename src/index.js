@@ -1,6 +1,5 @@
 import Koa from 'koa';
 import debug from 'debug';
-import passport from 'koa-passport';
 import bodyParser from 'koa-bodyparser';
 import jsonError from 'koa-json-error';
 import conditional from 'koa-conditional-get';
@@ -19,7 +18,6 @@ import loggerMiddleware from 'koa-bunyan-logger';
 import requestMiddleware from './middleware/request';
 import errorMiddleware from './middleware/error';
 
-import auth from './utils/passport';
 import routeMiddleware from './route';
 
 import conf from './conf';
@@ -63,8 +61,6 @@ app.use(loggerMiddleware());
 app.use(requestMiddleware());
 app.use(errorMiddleware());
 app.use(convert(responseTime()));
-app.use(passport.initialize());
-app.use(auth());
 
 // override koa's undocumented error handler
 app.context.onerror = errorHandler;

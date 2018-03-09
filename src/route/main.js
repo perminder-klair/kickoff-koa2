@@ -4,7 +4,6 @@ import compose from 'koa-compose';
 import validator, { object, string } from 'koa-context-validator';
 
 import * as Ctrl from '../controller/main';
-import { isAuthenticated } from '../utils/passport';
 
 const router = new Router();
 
@@ -25,7 +24,7 @@ router.post(
   Ctrl.contact,
 );
 
-router.post('/signS3', isAuthenticated(), Ctrl.signS3);
+router.post('/signS3', Ctrl.signS3);
 
 const routes = router.routes();
 const allowedMethods = router.allowedMethods({
