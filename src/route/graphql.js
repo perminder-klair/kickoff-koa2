@@ -4,16 +4,17 @@ import compose from 'koa-compose';
 import { graphqlKoa, graphiqlKoa } from 'apollo-server-koa';
 
 import schema from '../graphql';
-// import { isAuthenticated } from '../utils/passport';
+import { isAuthenticated } from '../utils/auth';
 
 const router = new Router();
 
 // https://dev-blog.apollodata.com/full-stack-react-graphql-tutorial-582ac8d24e3b
 router.post(
   '/graphql',
+  isAuthenticated,
   graphqlKoa(ctx => ({
     schema,
-    context: { userId: ctx.cookies.get('userId') },
+    context: ctx, // { userId: ctx.cookies.get('userId') },
   })),
 );
 

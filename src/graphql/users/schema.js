@@ -1,25 +1,45 @@
 const typeDefs = `
-  input UserInput {
-    fullName: String
-    postcode: String
+  type Profile {
+    firstName: String
+    lastName: String
   }
 
   type User {
     id: ID!                # "!" denotes a required field
-    fullName: String
-    postcode: String
+    email: String
+    slug: String
+    profile: Profile
+    status: String
+    jwt: String
+  }
+
+  type JwtUser {
+    jwt: String
+    user: User
+  }
+
+  input RegisterInput {
+    email: String!
+    password: String!
+    firstName: String
+    lastName: String
+  }
+
+  input LoginInput {
+    email: String!
+    password: String!
   }
 
   # This type specifies the entry points into our API. In this case
-  # there is only one - "Users" - which returns a list of users.
+  # there is only one - "me" - which returns a current user.
   type Query {
-    users: [User]    # "[]" means this is a list of users
+    me: User    # returns a current user
   }
 
   # The mutation root type, used to define all mutations.
   type Mutation {
-    # A mutation to add a new GlobalData
-    addUser(input: UserInput): User
+    register(input: RegisterInput): JwtUser
+    login(input: LoginInput): JwtUser
   }
 `;
 
