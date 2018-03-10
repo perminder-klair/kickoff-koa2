@@ -1,4 +1,4 @@
-import User from '../service/user';
+import User from './database';
 
 /**
  * Update current user

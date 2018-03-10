@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import aws from 'aws-sdk';
 import html from 'html-template-tag';
 
-import conf from '../conf';
+import conf from '../utils/config';
 
 const transporter = nodemailer.createTransport({
   service: 'Mailgun',

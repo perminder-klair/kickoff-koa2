@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-import conf from '../conf';
+import conf from './config';
 
 export const isAuthenticated = async (ctx, next) => {
   // console.log('isAuthenticated', ctx.header.authorization);
