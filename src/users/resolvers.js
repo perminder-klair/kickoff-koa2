@@ -51,5 +51,31 @@ export default {
       const token = generateToken(user);
       return { user, jwt: token };
     },
+    updateMe: async (root, args, ctx) => {
+      if (!ctx.user) {
+        throw new Error('Not logged in');
+      }
+
+      const objUpdate = {};
+      const objFind = { _id: ctx.user.id };
+
+      // update profile
+      if (args.input.email) {
+        objUpdate.email = args.input.email;
+      }
+      if (args.input.firstName) {
+        objUpdate['profile.firstName'] = args.input.profile.firstName;
+      }
+      if (args.input.lastName) {
+        objUpdate['profile.lastName'] = args.input.profile.lastName;
+      }
+
+      // console.log('objUpdate', objUpdate);
+      // console.log('objFind', objFind);
+      await User.update(objFind, objUpdate);
+
+      const user = await User.findOne({ _id: ctx.user._id });
+      return user;
+    },
   },
 };

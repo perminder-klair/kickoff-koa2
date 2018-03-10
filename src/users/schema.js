@@ -40,6 +40,7 @@ const typeDefs = `
   type Mutation {
     register(input: RegisterInput): JwtUser
     login(input: LoginInput): JwtUser
+    updateMe(input: RegisterInput): User
   }
 `;
 
