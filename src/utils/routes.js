@@ -18,7 +18,7 @@ router.post(
   isAuthenticated,
   graphqlKoa(ctx => ({
     schema,
-    context: ctx, // { userId: ctx.cookies.get('userId') },
+    context: ctx,
   })),
 );
 

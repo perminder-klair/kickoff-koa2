@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken';
 import conf from './config';
 
 export const isAuthenticated = async (ctx, next) => {
-  // console.log('isAuthenticated', ctx.header.authorization);
   ctx.user = null;
   if (!ctx.header.authorization) {
     return next();
