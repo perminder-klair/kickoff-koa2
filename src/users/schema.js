@@ -25,6 +25,13 @@ const typeDefs = `
     lastName: String
   }
 
+  input UpdateInput {
+    email: String
+    password: String
+    firstName: String
+    lastName: String
+  }
+
   input LoginInput {
     email: String!
     password: String!
@@ -40,7 +47,7 @@ const typeDefs = `
   type Mutation {
     register(input: RegisterInput): JwtUser
     login(input: LoginInput): JwtUser
-    updateMe(input: RegisterInput): User
+    updateMe(input: UpdateInput): User
   }
 `;
 

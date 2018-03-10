@@ -56,4 +56,4 @@ app.context.onerror = errorHandler;
 
 console.log('current environment: %s', config.get('env'));
 app.listen(config.get('port'));
-console.log('server started at port: %d', config.get('port'));
+console.log('server started at http://localhost:%d', config.get('port'));

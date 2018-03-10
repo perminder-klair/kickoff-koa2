@@ -1,6 +1,7 @@
 import mongoose from 'mongoose-fill';
 import bcrypt from 'bcryptjs';
 import slugify from 'slugify';
+import randomstring from 'randomstring';
 
 mongoose.Promise = global.Promise;
 
@@ -33,7 +34,6 @@ const UserSchema = new mongoose.Schema(
     },
     slug: {
       type: String,
-      required: true,
       index: true,
       trim: true,
       unique: true,
@@ -55,6 +55,14 @@ const UserSchema = new mongoose.Schema(
   },
 );
 
+const generateSlug = user => {
+  const slug = user.profile
+    ? `${user.profile.firstName || ''} ${user.profile.lastName ||
+        ''} ${randomstring.generate(4)}`
+    : randomstring.generate(7);
+  return slugify(slug);
+};
+
 UserSchema.pre('save', async function (done) { // eslint-disable-line
   // only hash the password if it has been modified (or is new)
   if (this.isNew || this.isModified('password')) {
@@ -62,6 +70,7 @@ UserSchema.pre('save', async function (done) { // eslint-disable-line
       const salt = await bcrypt.genSaltSync(10);
       const hash = await bcrypt.hashSync(this.password, salt);
       this.password = hash;
+      this.slug = generateSlug(this);
 
       return done();
     } catch (err) {
@@ -71,10 +80,10 @@ UserSchema.pre('save', async function (done) { // eslint-disable-line
 
   // slugify slug on update
   if (this.isModified('slug')) {
-    this.slug = slugify(this.slug);
-
-    return done();
+    this.slug = generateSlug(this);
   }
+
+  return done();
 });
 
 UserSchema.methods.comparePassword = async function (candidatePassword) { // eslint-disable-line

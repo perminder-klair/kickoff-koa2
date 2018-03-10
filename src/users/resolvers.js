@@ -1,5 +1,3 @@
-import randomstring from 'randomstring';
-
 import { generateToken } from '../utils/auth';
 import User from './database';
 
@@ -21,15 +19,10 @@ export default {
         throw new Error('E-mail already registered.');
       }
 
-      const slug = firstName
-        ? `${firstName} ${lastName} ${randomstring.generate(4)}`
-        : randomstring.generate(7);
-
       const data = {
         email,
         password,
         profile: { firstName, lastName },
-        slug,
       };
 
       user = new User(data);
@@ -74,8 +67,7 @@ export default {
       // console.log('objFind', objFind);
       await User.update(objFind, objUpdate);
 
-      const user = await User.findOne({ _id: ctx.user._id });
-      return user;
+      return User.findOne({ _id: ctx.user.id });
     },
   },
 };
