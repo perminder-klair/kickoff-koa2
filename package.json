@@ -1,13 +1,11 @@
 {
   "name": "kickoff-koa2",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "An opinionated boilerplate for koa v2 with batteries included",
   "author": "Parminder Klair <perminder.klair@gmail.com>",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "bin/server.js",
   "scripts": {
-    "pretest": "eslint src || true",
-    "test": "ava -v",
     "start": "node bin/server",
     "watch": "nodemon --watch src --inspect --debug bin/server",
     "lint": "eslint --fix --ext .jsx,.js src/*.js src/**/*.js src/**/**/*.js"
@@ -24,12 +22,10 @@
     "bcryptjs": "^2.4.3",
     "boom": "^7.2.0",
     "convict": "^4.0.2",
-    "debug": "^3.1.0",
     "dotenv": "^5.0.1",
     "graphql": "^0.13.1",
     "graphql-tools": "^2.21.0",
     "html-template-tag": "^2.0.0",
-    "isomorphic-fetch": "^2.2.1",
     "jsonwebtoken": "^8.2.0",
     "koa": "^2.5.0",
     "koa-better-error-handler": "^1.3.5",
@@ -50,28 +46,18 @@
     "mongoose": "^5.0.9",
     "mongoose-fill": "^1.7.0",
     "nodemailer": "^4.6.2",
-    "prop-types": "^15.6.1",
     "randomstring": "^1.1.5",
     "slugify": "^1.2.9",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
     "babel-runtime": "^6.26.0",
-    "chai": "^4.1.2",
-    "chai-http": "^3.0.0",
     "eslint": "^4.18.2",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
-    "mocha": "^5.0.4",
     "nodemon": "^1.17.1",
     "prettier": "^1.11.1"
-  },
-  "ava": {
-    "babel": "inherit",
-    "require": [
-      "babel-register"
-    ]
   }
 }

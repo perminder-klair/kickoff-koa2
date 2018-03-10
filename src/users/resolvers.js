@@ -1,7 +1,7 @@
 import randomstring from 'randomstring';
 
-import { generateToken } from '../../utils/auth';
-import User from '../../service/user';
+import { generateToken } from '../utils/auth';
+import User from './database';
 
 export default {
   Query: {

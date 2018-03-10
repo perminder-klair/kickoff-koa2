@@ -1,6 +1,5 @@
 import convict from 'convict';
 import fs from 'fs';
-import debug from 'debug';
 import dotenv from 'dotenv';
 
 // to load .env file
@@ -68,17 +67,16 @@ const conf = convict({
   },
 });
 
-const d = debug('kickstarter:conf');
 const env = conf.get('env');
 try {
   const path = `${__dirname}/${env}.json`;
 
-  d('trying to access %s', path);
+  console.log('trying to access %s', path);
   fs.accessSync(path, fs.F_OK);
 
   conf.loadFile(path);
 } catch (error) {
-  d("file doesn't exist, loading defaults");
+  console.log("file doesn't exist, loading defaults");
 }
 
 conf.validate({ allowed: 'strict' });
