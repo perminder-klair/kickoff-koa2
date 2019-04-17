@@ -7,7 +7,7 @@ import cors from 'koa-cors';
 import errorHandler from 'koa-better-error-handler';
 import responseTime from 'koa-response-time';
 import convert from 'koa-convert';
-import { omit } from 'underscore';
+import { omit } from 'lodash';
 import jsonMiddleware from 'koa-json';
 import loggerMiddleware from 'koa-bunyan-logger';
 

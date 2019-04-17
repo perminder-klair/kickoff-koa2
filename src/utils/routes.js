@@ -2,32 +2,15 @@ import Router from 'koa-router';
 import Errors from 'boom';
 import compose from 'koa-compose';
 import validator, { object, string } from 'koa-context-validator';
-import { graphqlKoa, graphiqlKoa } from 'apollo-server-koa';
 
-import schema from '../graphql';
-import { isAuthenticated } from '../utils/auth';
-import * as Ctrl from '../main/controller';
+import * as MainCtrl from '../controllers/main';
+import * as CarsCtrl from '../controllers/cars';
 
 const router = new Router();
 
-router.get('/', Ctrl.landing);
+router.get('/', MainCtrl.landing);
 
-// https://dev-blog.apollodata.com/full-stack-react-graphql-tutorial-582ac8d24e3b
-router.post(
-  '/graphql',
-  isAuthenticated,
-  graphqlKoa(ctx => ({
-    schema,
-    context: ctx,
-  })),
-);
-
-router.get(
-  '/graphiql',
-  graphiqlKoa({
-    endpointURL: '/graphql',
-  }),
-);
+router.get('/cars', CarsCtrl.listCars);
 
 router.post(
   '/contact',
@@ -41,10 +24,8 @@ router.post(
     },
     { stripUnknown: true },
   ),
-  Ctrl.contact,
+  MainCtrl.contact,
 );
-
-router.post('/signS3', Ctrl.signS3);
 
 const routes = router.routes();
 const allowedMethods = router.allowedMethods({

@@ -30,12 +30,6 @@ const conf = convict({
     default: '',
     env: 'MONGODB',
   },
-  jwtSecret: {
-    doc: 'JWT secret.',
-    format: String,
-    default: 'my-super-secure-secret',
-    env: 'JWTSECRET',
-  },
   mailer: {
     user: {
       doc: 'Mailer user.',
@@ -44,23 +38,6 @@ const conf = convict({
     },
     password: {
       doc: 'Mailer password.',
-      format: String,
-      default: '',
-    },
-  },
-  s3: {
-    bucket: {
-      doc: 'S3 Bucket name.',
-      format: String,
-      default: '',
-    },
-    key: {
-      doc: 'S3 AWS_ACCESS_KEY_ID.',
-      format: String,
-      default: '',
-    },
-    secret: {
-      doc: 'S3 AWS_SECRET_ACCESS_KEY.',
       format: String,
       default: '',
     },

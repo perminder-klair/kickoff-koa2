@@ -1,21 +1,22 @@
-## `kickoff-koa2`
+## `kickoff-koa2-lite`
 
 > An opinionated boilerplate for koa v2 with batteries included.
 
 #### Requirements
 ```bash
-- Node >=v8.9.4
-- NPM >=v4.1.2
+- Node >=v10.13.0
+- NPM >=v6.4.1
 - MongoDB
 ```
+
 #### Features
 ```bash
-- GraphQL API (Apollo Data)
-- Local Authentication using Email and Password (Login, Register)
+- Routing
 - Contact form request (powered by Mailgun, Sendgrid or Mandrill)
-- File upload using Amazon S3
 ```
+
 ### Setup
+
 ```bash
   # clone the repository
   λ git clone https://github.com/perminder-klair/kickoff-koa2
@@ -34,9 +35,7 @@
 - [Koa Context Validator](https://github.com/chentsulin/koa-context-validator) A robust context validator for koajs.
 - [Nodemailer](https://github.com/nodemailer/nodemailer) Send e-mails with Node.JS – easy as cake!
 - [Mongoose](https://github.com/Automattic/mongoose) MongoDB object modeling designed to work in an asynchronous environment.
-- [Apollo data](https://www.apollodata.com/) Tools & Products for GraphQL
 - [Bunyan](https://github.com/trentm/node-bunyan) Extensive logging module.
-- [AWS SDK](https://github.com/aws/aws-sdk-js) AWS SDK for JavaScript in the browser and Node.js. strings.
 - [Boom](https://github.com/hapijs/boom) HTTP Errors.
 - [Convict](https://github.com/mozilla/node-convict) Configuration management.
 - [Babel](https://github.com/babel/babel) Support ES6/ES7 features.
